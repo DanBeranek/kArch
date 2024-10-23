@@ -1,22 +1,53 @@
 ---
 layout: default
-title: Neat Starter
+title: Klára Adamová
 path: home
 ---
+<main>
+    <section class="hidden">
+        <h1>
+            <strong>
+                {{title}}
+            </strong>
+            <div class="aurora">
+                <div class="aurora__item"></div>
+                <div class="aurora__item"></div>
+                <div class="aurora__item"></div>
+                <div class="aurora__item"></div>
+            </div>
+        </h1>
+        <h2>absolutní královna &#x2022; fanynka kvalitní architektury</h2>
+    </section>
+    <!--  {% include "./_includes/partials/content.html" %}-->
+    <div class="image-container">
+        <img src="./static/img/background.png"
+             class="base-image"
+             loading="lazy"
+        >
 
-<div class="container mx-auto lg:h-screen flex flex-col justify-center items-center">
-  <h1>
-    Welcome to
-    <strong class="bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-500">
-      {{title}}
-    </strong>
-  </h1>
+        <img src="./static/img/ground.png"
+             class="hidden overlay-image"
+             style="--order: 1"
+             loading="lazy"
+             >
 
-  <p>
-    <abbr title="netlify cms, eleventy, alpine js & tailwind css">NEAT</abbr>
-    Starter Template. Get Started by editing.
-    <code class="bg-gray-100 text-blue-800 p-1">/index.njk</code>
-  </p>
+        <img src="./static/img/house.png"
+             class="hidden overlay-image"
+             style="--order: 2"
+             loading="lazy"
+        >
 
-  {% include "./_includes/partials/content.html" %}
-</div>
+        <img src="./static/img/staffage.png"
+             class="hidden overlay-image"
+             style="--order: 3"
+             loading="lazy"
+        >
+
+    </div>
+    <section class="hidden">
+        <h1>TEST</h1>
+    </section>
+    <section class="hidden">
+        <h1>TEST 2</h1>
+    </section>
+</main>
