@@ -56,47 +56,49 @@ prism: true
 <script src="/static/js/splide-extension-intersection.js"></script>
 
 <script>
-    var splide = new Splide( '#main-carousel', {
-        pagination: false,
-        type: 'loop',
-        autoplay: true,
-        interval: 5000,
-        resetProgress: false,
-        intersection: {
-            inView: {
-                autoplay: true
-            },
-            outView: {
-                autoplay: false
+    document.addEventListener("DOMContentLoaded", () => {
+        var splide = new Splide( '#main-carousel', {
+            pagination: false,
+            type: 'loop',
+            autoplay: true,
+            interval: 5000,
+            resetProgress: false,
+            intersection: {
+                inView: {
+                    autoplay: true
+                },
+                outView: {
+                    autoplay: false
+                }
             }
-        }
-    } );
-
-    var thumbnails = document.getElementsByClassName( 'thumbnail' );
-    var current;
-
-    for ( var i = 0; i < thumbnails.length; i++ ) {
-        initThumbnail( thumbnails[ i ], i );
-    }
-
-    function initThumbnail( thumbnail, index ) {
-        thumbnail.addEventListener( 'click', function () {
-            splide.go( index );
         } );
-    }
 
-    splide.on( 'mounted move', function () {
-        var thumbnail = thumbnails[ splide.index ];
+        var thumbnails = document.getElementsByClassName( 'thumbnail' );
+        var current;
 
-        if ( thumbnail ) {
-            if ( current ) {
-                current.classList.remove( 'is-active' );
-            }
-
-            thumbnail.classList.add( 'is-active' );
-            current = thumbnail;
+        for ( var i = 0; i < thumbnails.length; i++ ) {
+            initThumbnail( thumbnails[ i ], i );
         }
-    } );
 
-    splide.mount( window.splide.Extensions );
+        function initThumbnail( thumbnail, index ) {
+            thumbnail.addEventListener( 'click', function () {
+                splide.go( index );
+            } );
+        }
+
+        splide.on( 'mounted move', function () {
+            var thumbnail = thumbnails[ splide.index ];
+
+            if ( thumbnail ) {
+                if ( current ) {
+                    current.classList.remove( 'is-active' );
+                }
+
+                thumbnail.classList.add( 'is-active' );
+                current = thumbnail;
+            }
+        } );
+
+        splide.mount( window.splide.Extensions );
+    })
 </script>
