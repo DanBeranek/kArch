@@ -63,6 +63,7 @@ module.exports = function (eleventyConfig) {
     "./node_modules/prismjs/themes/prism-tomorrow.css":
       "./static/css/prism-tomorrow.css",
     "./node_modules/@splidejs/splide/dist/js/splide.min.js": "./static/js/splide.js",
+    "./node_modules/@splidejs/splide-extension-intersection/dist/js/splide-extension-intersection.js": "./static/js/splide-extension-intersection.js",
     "./src/static/js/app.js": "./static/js/app.js",
   });
 

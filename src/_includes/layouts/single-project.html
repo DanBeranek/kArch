@@ -16,63 +16,87 @@ prism: true
             {% if atelier %} &bull; {{ atelier | upper }} {% endif %}
         </p>
     </div>
-    <section id="main-carousel" class="splide">
-        <div class="splide__track">
-            <ul class="splide__list">
+    <div class="block lg:flex lg:flex-row-reverse lg:gap-4">
+        <div class="w-full lg:w-4/5">
+            <section id="main-carousel" class="splide relative">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        {% for img in images %}
+                            <li class="splide__slide">
+                                {% image img.src, img.alt, "" %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <button class="splide__toggle absolute h-full w-full top-0 left-0" type="button">
+                    <span class="splide__toggle__play"></span>
+                    <span class="splide__toggle__pause"></span>
+                </button>
+                <div class="splide__progress">
+                    <div class="splide__progress__bar">
+                    </div>
+                </div>
+            </section>
+
+            <ul id="thumbnails" class="thumbnails">
                 {% for img in images %}
-                    <li class="splide__slide">
+                    <li class="thumbnail">
                         {% image img.src, img.alt, "" %}
                     </li>
                 {% endfor %}
             </ul>
         </div>
-    </section>
-
-    <section id="thumbnail-carousel" class="splide">
-        <div class="splide__track">
-            <ul class="splide__list">
-                {% for img in images %}
-                    <li class="splide__slide">
-                        {% image img.src, img.alt, "" %}
-                    </li>
-                {% endfor %}
-            </ul>
-        </div>
-    </section>
-
-    <article class="prose lg:prose-xl my-4 mx-auto !max-w-none">
-        {{ content | safe }}
-    </article>
+        <article class="flex flex-col justify-center w-full lg:w-1/5 py-4">
+            {{ content | safe }}
+        </article>
+    </div>
 </div>
 
 <script src="/static/js/splide.js"></script>
+<script src="/static/js/splide-extension-intersection.js"></script>
 
 <script>
-    document.addEventListener( 'DOMContentLoaded', function () {
-        var primarySlider = new Splide( '#main-carousel', {
-            type      : 'fade',
-            rewind    : true,
-            pagination: false,
-            arrows    : false,
-            autoWidth: true
-        } );
-        var thumbnailsSlider = new Splide( '#thumbnail-carousel', {
-            fixedWidth : 100,
-            fixedHeight: 64,
-            gap        : 10,
-            rewind     : true,
-            pagination : false,
-            isNavigation: true,
-            focus      : 'center',
-            breakpoints: {
-                600: {
-                    fixedWidth : 66,
-                    fixedHeight: 40,
-                },
+    var splide = new Splide( '#main-carousel', {
+        pagination: false,
+        type: 'loop',
+        autoplay: true,
+        interval: 5000,
+        resetProgress: false,
+        intersection: {
+            inView: {
+                autoplay: true
             },
-        } );
-        primarySlider.sync( thumbnailsSlider );
-        primarySlider.mount();
-        thumbnailsSlider.mount();
+            outView: {
+                autoplay: false
+            }
+        }
     } );
+
+    var thumbnails = document.getElementsByClassName( 'thumbnail' );
+    var current;
+
+    for ( var i = 0; i < thumbnails.length; i++ ) {
+        initThumbnail( thumbnails[ i ], i );
+    }
+
+    function initThumbnail( thumbnail, index ) {
+        thumbnail.addEventListener( 'click', function () {
+            splide.go( index );
+        } );
+    }
+
+    splide.on( 'mounted move', function () {
+        var thumbnail = thumbnails[ splide.index ];
+
+        if ( thumbnail ) {
+            if ( current ) {
+                current.classList.remove( 'is-active' );
+            }
+
+            thumbnail.classList.add( 'is-active' );
+            current = thumbnail;
+        }
+    } );
+
+    splide.mount( window.splide.Extensions );
 </script>

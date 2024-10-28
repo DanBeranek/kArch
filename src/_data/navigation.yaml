@@ -1,8 +1,6 @@
 ---
 items:
-  - text: Projekty
-    url: "/projects"
   - text: O mně
     url: "/about"
-  - text: Portfolio
-    url: "/portfolio"
+  - text: Projekty
+    url: "/projects"
