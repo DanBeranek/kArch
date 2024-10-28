@@ -1,0 +1,78 @@
+---
+layout: default
+prism: true
+---
+
+<div class="container mt-2">
+    <div class="pb-5 mb-5 border-b border-gray-100">
+        <h1>
+            <span class="font-bold">
+            {{ title | upper }}
+            </span>
+            {% if subtitle %} {{ subtitle | upper }} {% endif %}
+        </h1>
+        <p class="text-center text-base leading-6 font-medium text-gray-500">
+            {% if semester %} {{ semester }} {% endif %}
+            {% if atelier %} &bull; {{ atelier | upper }} {% endif %}
+        </p>
+    </div>
+    <section id="main-carousel" class="splide">
+        <div class="splide__track">
+            <ul class="splide__list">
+                {% for img in images %}
+                    <li class="splide__slide">
+                        {% image img.src, img.alt, "" %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <section id="thumbnail-carousel" class="splide">
+        <div class="splide__track">
+            <ul class="splide__list">
+                {% for img in images %}
+                    <li class="splide__slide">
+                        {% image img.src, img.alt, "" %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+
+    <article class="prose lg:prose-xl my-4 mx-auto !max-w-none">
+        {{ content | safe }}
+    </article>
+</div>
+
+<script src="/static/js/splide.js"></script>
+
+<script>
+    document.addEventListener( 'DOMContentLoaded', function () {
+        var primarySlider = new Splide( '#main-carousel', {
+            type      : 'fade',
+            rewind    : true,
+            pagination: false,
+            arrows    : false,
+            autoWidth: true
+        } );
+        var thumbnailsSlider = new Splide( '#thumbnail-carousel', {
+            fixedWidth : 100,
+            fixedHeight: 64,
+            gap        : 10,
+            rewind     : true,
+            pagination : false,
+            isNavigation: true,
+            focus      : 'center',
+            breakpoints: {
+                600: {
+                    fixedWidth : 66,
+                    fixedHeight: 40,
+                },
+            },
+        } );
+        primarySlider.sync( thumbnailsSlider );
+        primarySlider.mount();
+        thumbnailsSlider.mount();
+    } );
+</script>

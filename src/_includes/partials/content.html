@@ -1,15 +1,33 @@
-<div class="w-full max-w-2xl grid grid-cols-1 lg:grid-cols-2 gap-4 my-8 px-4 lg:mx-0">
+{% if collections.projects %}
+    <h1>PROJEKTY</h1>
+    <div class='flex flex-col gap-4 items-center justify-center min-h-screen'>
+        {% for project in collections.projects %}
+            {% set data = project.data %}
+            {% set link = "projects/" + project.fileSlug %}
+            {% set img = data.titleImg %}
+            {% set alt = data.title %}
 
-    {% if quicklinks.links %}
-
-        {% for item in quicklinks.links %}
-            <a href="{{item.url}}" target="_blank" class="p-5 border rounded border-gray-200 hover:border-purple-400">
-                <h3>{{item.title}}
-                    →</h3>
-                <p>{{item.desc}}</p>
+            <!-- Card Component -->
+            <a href="{{ link }}" class="overflow-hidden aspect-[165/50] cursor-pointer rounded-xl relative group">
+                <!-- Gradient overlay with hover effect -->
+                <div class="rounded-xl z-10 opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out cursor-pointer absolute from-black/80 to-transparent bg-gradient-to-t inset-0 text-white flex items-end">
+                    <div class="p-4 space-y-3 text-xl group-hover:opacity-100 group-hover:translate-y-0 translate-y-4 pb-10 transform transition duration-300 ease-in-out">
+                        <p>
+                            <span class="text-3xl font-bold">{{ data.title | upper }}</span>
+                            {% if data.subtitle %} {{ data.subtitle | upper }} {% endif %}
+                        </p>
+                        <p>
+                            {% if data.semester %} {{ data.semester }} {% endif %}
+                            {% if data.atelier %} &bull; {{ data.atelier | upper }} {% endif %}
+                        </p>
+                        <div class="text-sm">
+                            {{ data.description }}
+                        </div>
+                    </div>
+                </div>
+                <!-- Image with hover scale effect -->
+                {% image img, alt, "object-cover w-full h-full transition duration-300 ease-in-out group-hover:scale-[1.05]" %}
             </a>
         {% endfor %}
-
-    {% endif %}
-
-</div>
+    </div>
+{% endif %}

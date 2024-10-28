@@ -2,6 +2,8 @@ const yaml = require("js-yaml");
 const { DateTime } = require("luxon");
 const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const htmlmin = require("html-minifier");
+const Image = require('@11ty/eleventy-img');
+const path = require("node:path");
 
 module.exports = function (eleventyConfig) {
   // Disable automatic use of your .gitignore
@@ -17,6 +19,36 @@ module.exports = function (eleventyConfig) {
     );
   });
 
+  eleventyConfig.addAsyncShortcode("image", async (srcFilePath, alt, className = "", widths = [400, 800, 1600],sizes = "100vh") => {
+    // Make the image relative to the input directory
+    let inputFilePath = path.join(eleventyConfig.dir.input, srcFilePath);
+    let fileExtension = inputFilePath.slice(inputFilePath.lastIndexOf("."));
+    let formats = ["avif", "webp", "svg", "jpeg"];
+
+    if (fileExtension === ".png") {
+      formats = ["avif", "webp", "svg"];
+    }
+
+    let metadata = await Image(inputFilePath, {
+      widths: widths,
+      formats: formats,
+      outputDir: "./_site/optimized/",
+      urlPath: "/optimized/",
+      svgShortCiruit: "size",
+      // svgCompressionSize: "br",
+    });
+
+    let imageAttributes = {
+      alt,
+      sizes,
+      class: className,
+      loading: "lazy",
+      decoding: "async"
+    }
+
+    return Image.generateHTML(metadata, imageAttributes)
+  });
+
   // Syntax Highlighting for Code blocks
   eleventyConfig.addPlugin(syntaxHighlight);
 
@@ -30,11 +62,12 @@ module.exports = function (eleventyConfig) {
     "./node_modules/alpinejs/dist/cdn.min.js": "./static/js/alpine.js",
     "./node_modules/prismjs/themes/prism-tomorrow.css":
       "./static/css/prism-tomorrow.css",
+    "./node_modules/@splidejs/splide/dist/js/splide.min.js": "./static/js/splide.js",
     "./src/static/js/app.js": "./static/js/app.js",
   });
 
   // Copy Image Folder to /_site
-  eleventyConfig.addPassthroughCopy("./src/static/img");
+  // eleventyConfig.addPassthroughCopy("./src/static/img");
 
   // Copy favicon to route of /_site
   eleventyConfig.addPassthroughCopy("./src/favicon.ico");

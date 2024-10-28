@@ -3,51 +3,13 @@ layout: default
 title: Klára Adamová
 path: home
 ---
-<main>
-    <section class="hidden">
-        <h1>
-            <strong>
-                {{title}}
-            </strong>
-            <div class="aurora">
-                <div class="aurora__item"></div>
-                <div class="aurora__item"></div>
-                <div class="aurora__item"></div>
-                <div class="aurora__item"></div>
-            </div>
-        </h1>
-        <h2>absolutní královna &#x2022; fanynka kvalitní architektury</h2>
-    </section>
-    <!--  {% include "./_includes/partials/content.html" %}-->
+<main class="flex flex-col justify-center items-center">
     <div class="image-container">
-        <img src="./static/img/background.png"
-             class="base-image"
-             loading="lazy"
-        >
-
-        <img src="./static/img/ground.png"
-             class="hidden overlay-image"
-             style="--order: 1"
-             loading="lazy"
-             >
-
-        <img src="./static/img/house.png"
-             class="hidden overlay-image"
-             style="--order: 2"
-             loading="lazy"
-        >
-
-        <img src="./static/img/staffage.png"
-             class="hidden overlay-image"
-             style="--order: 3"
-             loading="lazy"
-        >
-
+        {% image "./static/img/home/background.png", "", "base-image" %}
+        {% image "./static/img/home/ground.png", "", "overlay-image hide img-1" %}
+        {% image "./static/img/home/house.png", "", "overlay-image hide img-2" %}
+        {% image "./static/img/home/staffage.png", "", "overlay-image hide img-3" %}
     </div>
-    <section class="hidden">
-        <h1>TEST</h1>
-    </section>
-    <section class="hidden">
-        <h1>TEST 2</h1>
-    </section>
+
+    {% include "./_includes/partials/content.html" %}
 </main>
