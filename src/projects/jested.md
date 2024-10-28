@@ -1,7 +1,6 @@
 ---
 title: Lanovka na Ještěd
 subtitle: Spodní stanice
-description: blablabla
 semester: LS 23/24
 atelier: Šikola, Klapalová
 titleImg: "./static/img/titles/jested.jpg"
