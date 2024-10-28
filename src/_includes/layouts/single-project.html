@@ -1,0 +1,102 @@
+---
+layout: default
+prism: true
+---
+
+<div class="container mt-2">
+    <div class="pb-5 mb-5 border-b border-gray-100">
+        <h1>
+            <span class="font-bold">
+            {{ title | upper }}
+            </span>
+            {% if subtitle %} {{ subtitle | upper }} {% endif %}
+        </h1>
+        <p class="text-center text-base leading-6 font-medium text-gray-500">
+            {% if semester %} {{ semester }} {% endif %}
+            {% if atelier %} &bull; {{ atelier | upper }} {% endif %}
+        </p>
+    </div>
+    <div class="block lg:flex lg:flex-row-reverse lg:gap-4">
+        <div class="w-full lg:w-4/5">
+            <section id="main-carousel" class="splide relative">
+                <div class="splide__track">
+                    <ul class="splide__list">
+                        {% for img in images %}
+                            <li class="splide__slide">
+                                {% image img.src, img.alt, "" %}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <button class="splide__toggle absolute h-full w-full top-0 left-0" type="button">
+                    <span class="splide__toggle__play"></span>
+                    <span class="splide__toggle__pause"></span>
+                </button>
+                <div class="splide__progress">
+                    <div class="splide__progress__bar">
+                    </div>
+                </div>
+            </section>
+
+            <ul id="thumbnails" class="thumbnails">
+                {% for img in images %}
+                    <li class="thumbnail">
+                        {% image img.src, img.alt, "" %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <article class="flex flex-col justify-center w-full lg:w-1/5 py-4">
+            {{ content | safe }}
+        </article>
+    </div>
+</div>
+
+<script src="/static/js/splide.js"></script>
+<script src="/static/js/splide-extension-intersection.js"></script>
+
+<script>
+    var splide = new Splide( '#main-carousel', {
+        pagination: false,
+        type: 'loop',
+        autoplay: true,
+        interval: 5000,
+        resetProgress: false,
+        intersection: {
+            inView: {
+                autoplay: true
+            },
+            outView: {
+                autoplay: false
+            }
+        }
+    } );
+
+    var thumbnails = document.getElementsByClassName( 'thumbnail' );
+    var current;
+
+    for ( var i = 0; i < thumbnails.length; i++ ) {
+        initThumbnail( thumbnails[ i ], i );
+    }
+
+    function initThumbnail( thumbnail, index ) {
+        thumbnail.addEventListener( 'click', function () {
+            splide.go( index );
+        } );
+    }
+
+    splide.on( 'mounted move', function () {
+        var thumbnail = thumbnails[ splide.index ];
+
+        if ( thumbnail ) {
+            if ( current ) {
+                current.classList.remove( 'is-active' );
+            }
+
+            thumbnail.classList.add( 'is-active' );
+            current = thumbnail;
+        }
+    } );
+
+    splide.mount( window.splide.Extensions );
+</script>
