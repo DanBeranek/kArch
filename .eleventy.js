@@ -19,6 +19,12 @@ module.exports = function (eleventyConfig) {
     );
   });
 
+  eleventyConfig.addCollection("projects", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/projects/*.md").sort((a, b) => {
+      return a.data.order - b.data.order;
+    })
+  });
+
   eleventyConfig.addAsyncShortcode("image", async (srcFilePath, alt, className = "", widths = [400, 800, 1600],sizes = "100vh") => {
     // Make the image relative to the input directory
     let inputFilePath = path.join(eleventyConfig.dir.input, srcFilePath);
