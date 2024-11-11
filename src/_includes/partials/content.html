@@ -1,7 +1,7 @@
 {% if collections.projects %}
     <h1>PROJEKTY</h1>
-    <div class='flex flex-col gap-4 items-center justify-center min-h-screen'>
-        {% for project in collections.projects %}
+    <div class='flex flex-col gap-4 items-center justify-center'>
+        {% for project in collections.projects | sort('data.order') %}
             {% set data = project.data %}
             {% set link = "projects/" + project.fileSlug %}
             {% set img = data.titleImg %}
@@ -10,10 +10,10 @@
             <!-- Card Component -->
             <a href="{{ link }}" class="overflow-hidden aspect-[165/50] cursor-pointer rounded-xl relative group">
                 <!-- Gradient overlay with hover effect -->
-                <div class="rounded-xl z-10 opacity-0 group-hover:opacity-100 transition duration-300 ease-in-out cursor-pointer absolute from-black/80 to-transparent bg-gradient-to-t inset-0 text-white flex items-end">
-                    <div class="p-4 space-y-3 text-xl group-hover:opacity-100 group-hover:translate-y-0 translate-y-4 pb-10 transform transition duration-300 ease-in-out">
+                <div class="rounded-xl z-10 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition duration-300 ease-in-out cursor-pointer absolute from-black/80 to-transparent bg-gradient-to-t inset-0 text-white flex items-end">
+                    <div class="p-4 space-y-1 text-base lg:text-xl group-hover:opacity-100 group-active:opacity-100 group-hover:translate-y-0 group-active:translate-y-0 translate-y-4 pb-4 lg:pb-6 transform transition duration-300 ease-in-out">
                         <p>
-                            <span class="text-3xl font-bold">{{ data.title | upper }}</span>
+                            <span class="text-xl lg:text-3xl font-bold">{{ data.title | upper }}</span>
                             {% if data.subtitle %} {{ data.subtitle | upper }} {% endif %}
                         </p>
                         <p>
@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <!-- Image with hover scale effect -->
-                {% image img, alt, "object-cover w-full h-full transition duration-300 ease-in-out group-hover:scale-[1.05]" %}
+                {% image img, alt, "object-cover object-center w-full h-full transition duration-300 ease-in-out group-hover:scale-[1.05] group-active:scale-[1.05]" %}
             </a>
         {% endfor %}
     </div>

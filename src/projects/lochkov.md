@@ -1,5 +1,6 @@
 ---
 title: Rodinný dům Lochkov
+order: 2
 subtitle: Bakalářská práce
 semester: LS 22/23
 atelier: Knytl
