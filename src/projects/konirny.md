@@ -32,7 +32,7 @@ images: [
   },
   {
     src: "./static/img/konirny/07.jpg",
-    alt: "Půdorys 2.NP a 3.np"
+    alt: "Půdorys 2.NP a 3.NP"
   },
   {
     src: "./static/img/konirny/08.jpg",
@@ -45,4 +45,5 @@ images: [
 ]
 ---
 
-V rámci návrhu revitalizace areálu Ledáren Braník byl vytvořen kompletní urbanistický návrh tohoto areálu a přilehlého okolí. Blíže jsem zpracovávala nové využití objektu původních koníren. Prostory byly využity jako hotel a původnímu objektu byla vytvořena nástavba s výrazným obvodovým pláštěm. V místě prostor, kde původně stájily koně bylo vytvořeno wellness a kavárna. Charakter původní podoby domu byl zachován a podpořen návrhem parteru a blízkého okolí.
+Návrh se zaměřuje na revitalizaci historických objektů areálu Branických ledáren a na urbanistické řešení jeho okolí. Urbanistická koncepce je založena na diagonální ose, která prochází od komínu branického pivovaru, přes nově navržené náměstí před ledárnami, až k výhledu na Barrandovské skály. Tato diagonála je podpořena nově vytvořeným sníženým parterem před původními konírnami a novostavbou před budovou Ledárny.
+Areál branických ledáren je v současnosti značně zanedbaný, přesto zde stojí několik objektů s architektonickou i historickou hodnotou, které jsou však ve špatném technickém stavu, což negativně ovlivňuje celkový dojem areálu. V projektu je proto navrženo zachování historicky cenných fasád, do nichž jsou integrovány nové objemy s moderními funkcemi. Návrh klade důraz na plnohodnotné využití suterénních prostor a zdůraznění kvality stávajících budov. Nové části sjednocuje předsazená fasáda z keramických glazovaných dlaždic zavěšených na kovových lankách (flex bricks). Diagonální urbanistická osa procházející územím je zvýrazněna nově vybudovanými objekty.
