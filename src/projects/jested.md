@@ -44,5 +44,5 @@ images: [
   },
 ]
 ---
-Návrh v městské části Horní Hanychov v Liberci představuje multifunkční dům zahrnující dolní stanici lanovky a přidružené provozy. Ideou bylo vytvořit optickou bariéru mezi parkovištěm a areálem a zároveň vhodně navázat na trasu lanové dráhy. Hmotové uspořádání se skládá ze dvou na sobě pootočených objemů. Tvar lanové dráhy podporuje stoupání směrem k Ještědu a na opačnou stranu výhled na město Liberec. Hmota stavby reaguje na svažitost terénu a je rozdělena do třech výškových úrovní, které jsou přístupné z navazujícího terénu.
+Návrh v městské části Horní Hanychov v Liberci představuje multifunkční dům zahrnující dolní stanici lanovky a přidružené provozy. Ideou bylo vytvořit optickou bariéru mezi parkovištěm a areálem a zároveň vhodně navázat na trasu lanové dráhy. Hmotové uspořádání se skládá ze dvou na sobě pootočených objemů. Tvar lanové dráhy podporuje stoupání směrem k Ještědu a na opačnou stranu výhled na město liberec. Hmota stavby reaguje na svažitost terénu a je rozdělena do třech výškových úrovní, které jsou přístupné z navazujícího terénu.
 

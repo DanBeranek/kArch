@@ -4,7 +4,7 @@ prism: true
 ---
 
 <div class="container mt-2">
-    <div class="pb-5 mb-5 border-b border-gray-100">
+    <div class="pb-5 mb-5 border-b-2 border-gray-100">
         <h1>
             <span class="font-bold">
             {{ title | upper }}
@@ -17,7 +17,7 @@ prism: true
         </p>
     </div>
     <div class="block lg:flex lg:flex-row-reverse lg:gap-4">
-        <div class="w-full lg:w-3/4">
+        <div class="w-full lg:w-3/5">
             <section id="main-carousel" class="splide relative">
                 <div class="splide__track">
                     <ul class="splide__list">
@@ -46,7 +46,7 @@ prism: true
                 {% endfor %}
             </ul>
         </div>
-        <article class="flex flex-col justify-center w-full lg:w-1/4 py-4 text-justify">
+        <article class="flex flex-col justify-normal w-full lg:w-2/5 py-4 text-justify indent-8 text-[0.9375rem] font-light">
             {{ content | safe }}
         </article>
     </div>
@@ -68,7 +68,7 @@ prism: true
                     autoplay: true
                 },
                 outView: {
-                    autoplay: false
+                    autoplay: true
                 }
             }
         } );
