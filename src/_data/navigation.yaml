@@ -3,4 +3,4 @@ items:
   - text: O mně
     url: "/about"
   - text: Projekty
-    url: "/projects"
+    url: "/#projects"
