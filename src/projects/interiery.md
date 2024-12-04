@@ -4,7 +4,7 @@ order: 5
 subtitle: 
 semester: 
 atelier:
-titleImg: "./static/img/titles/interier.tif"
+titleImg: "./static/img/titles/interier.jpg"
 images: [
   {
     src: "./static/img/interiery/01.jpg",
